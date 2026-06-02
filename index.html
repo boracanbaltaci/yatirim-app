@@ -46,6 +46,16 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .stat-label{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;}
 .stat-val{font-size:24px;font-weight:600;color:var(--text);letter-spacing:-0.02em;}
 .stat-sub{font-size:11px;color:var(--text3);margin-top:2px;}
+
+/* MARKET SECTIONS */
+.market-section{margin-bottom:28px;}
+.market-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding-bottom:8px;border-bottom:0.5px solid var(--border);}
+.market-badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:6px;letter-spacing:0.04em;}
+.mb-bist{background:rgba(245,158,11,0.12);color:#fbbf24;}
+.mb-nasdaq{background:rgba(59,130,246,0.12);color:#60a5fa;}
+.mb-sp500{background:rgba(34,197,94,0.12);color:#4ade80;}
+.market-count{font-size:11px;color:var(--text3);}
+
 .signal-list{display:flex;flex-direction:column;gap:3px;}
 .sig{background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color 0.15s;}
 .sig:hover{border-color:var(--border2);}
@@ -65,12 +75,17 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .b-double{background:rgba(59,130,246,0.2);color:#93c5fd;}
 .b-vol{background:rgba(34,197,94,0.1);color:#4ade80;}
 .b-earn{background:rgba(167,139,250,0.1);color:#c4b5fd;}
-.pcol{text-align:right;min-width:88px;}
-.price{font-size:14px;font-weight:600;}
-.chg{font-size:11px;font-weight:500;}
-.chg.up{color:var(--green);}
-.chg.dn{color:var(--red);}
-.since{font-size:10px;color:var(--text2);}
+
+/* PRICE COLUMN - daha belirgin */
+.pcol{text-align:right;min-width:100px;}
+.price{font-size:15px;font-weight:700;}
+.chg{font-size:13px;font-weight:700;padding:2px 6px;border-radius:4px;display:inline-block;margin-top:2px;}
+.chg.up{color:#fff;background:rgba(34,197,94,0.25);}
+.chg.dn{color:#fff;background:rgba(239,68,68,0.25);}
+.since-detect{font-size:10px;color:var(--text2);margin-top:2px;}
+.since-detect.sup{color:var(--green);}
+.since-detect.sdn{color:var(--red);}
+
 .star{background:none;border:none;cursor:pointer;color:var(--text3);font-size:16px;padding:4px;transition:color 0.15s;margin-left:2px;}
 .star.on{color:var(--amber);}
 .chevron{color:var(--text3);font-size:12px;margin-left:2px;transition:transform 0.2s;}
@@ -78,6 +93,11 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .sig-detail{display:none;border-top:0.5px solid var(--border);}
 .sig.open .sig-detail{display:block;}
 .detail-inner{padding:16px;background:var(--bg);}
+
+/* Tespit bilgisi */
+.detect-strip{display:flex;align-items:center;gap:10px;background:var(--bg2);border-radius:7px;padding:8px 12px;margin-bottom:14px;font-size:11px;color:var(--text2);}
+.detect-strip b{color:var(--text);}
+
 .detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
 .dstat{background:var(--bg2);border-radius:8px;padding:10px 12px;}
 .dl{font-size:10px;color:var(--text2);margin-bottom:4px;display:flex;align-items:center;gap:4px;}
@@ -130,6 +150,13 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .page{display:none;}
 .page.active{display:block;}
 
+/* ASSISTANT */
+.assistant-feed{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+.tip-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:14px 16px;}
+.tip-card-label{font-size:10px;color:var(--accent);margin-bottom:6px;display:flex;align-items:center;gap:5px;}
+.tip-card-text{font-size:13px;line-height:1.65;color:var(--text);}
+.tip-card-time{font-size:10px;color:var(--text3);margin-top:6px;}
+
 /* MACRO */
 .macro-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
 .mc{background:var(--bg2);border:0.5px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.15s;}
@@ -156,7 +183,7 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .mc-good.good{background:rgba(34,197,94,0.1);color:#4ade80;}
 .mc-good.bad{background:rgba(239,68,68,0.1);color:#f87171;}
 .mc-good.neutral{background:rgba(100,100,120,0.1);color:var(--text2);}
-.mc-upcoming{background:var(--bg3);border-radius:8px;padding:8px 12px;font-size:11px;display:flex;align-items:center;gap:8px;margin-top:6px;}
+.mc-upcoming{background:var(--bg3);border-radius:8px;padding:8px 12px;font-size:11px;display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap;}
 .mc-upcoming-badge{background:rgba(167,139,250,0.12);color:#c4b5fd;font-size:10px;padding:2px 8px;border-radius:4px;white-space:nowrap;}
 .mc-days{font-weight:600;color:var(--amber);}
 .mc-detail{display:none;border-top:0.5px solid var(--border);padding:14px 16px;background:var(--bg);}
@@ -177,8 +204,6 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .earn-card.miss{border-left:2px solid var(--red);}
 .earn-card.upcoming{border-left:2px solid var(--text3);}
 .earn-logo{width:32px;height:32px;border-radius:8px;background:var(--bg3);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
-.earn-logo img{width:26px;height:26px;object-fit:contain;border-radius:4px;}
-.earn-logo span{font-size:10px;font-weight:700;color:var(--text2);}
 .earn-sym{min-width:70px;}
 .earn-tk{font-size:14px;font-weight:600;}
 .earn-date{font-size:10px;color:var(--text2);margin-top:1px;}
@@ -205,34 +230,31 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
     <div class="nav-item" onclick="showPage('macro',this)">📊 Makro Veri</div>
     <div class="nav-item" onclick="showPage('earnings',this)">📅 Earnings</div>
     <div class="nav-sep"></div>
+    <div class="nav-item" onclick="showPage('assistant',this)">🤖 Asistan</div>
     <div class="nav-item" onclick="showPage('settings',this)">⚙ Ayarlar</div>
     <div class="sidebar-bottom">
       <div class="key-ind"><div class="kdot" id="fhDot"></div>Finnhub</div>
       <div class="key-ind"><div class="kdot" id="akDot"></div>Anthropic</div>
-      <div class="key-ind"><div class="kdot" id="fredDot"></div>FRED (opsiyonel)</div>
+      <div class="key-ind"><div class="kdot" id="fredDot"></div>FRED</div>
     </div>
   </div>
 
   <div class="main">
     <!-- SCAN -->
     <div class="page active" id="page-scan">
-      <div class="page-hdr"><div><div class="page-title">Sinyal Taraması</div><div class="page-sub">WT n1=10 n2=21 · RSI 14 Kapanış · Günlük veri</div></div></div>
+      <div class="page-hdr">
+        <div><div class="page-title">Sinyal Taraması</div><div class="page-sub">WT n1=10 n2=21 · RSI 14 · Günlük veri · Tüm sinyaller</div></div>
+      </div>
       <div class="key-setup" id="keySetup">
         <div class="key-setup-title">🔑 API Key'lerini gir (bir kez yeterli)</div>
         <div class="key-row">
           <input class="ki" id="kFinnhub" type="password" placeholder="Finnhub key..." />
           <input class="ki" id="kAnthropic" type="password" placeholder="Anthropic key..." />
-          <input class="ki" id="kFred" type="password" placeholder="FRED key (opsiyonel, geçmiş grafik için)..." />
+          <input class="ki" id="kFred" type="password" placeholder="FRED key..." />
           <button class="btn" onclick="saveKeys()">Kaydet</button>
         </div>
       </div>
       <div class="controls">
-        <div class="tab-group">
-          <button class="tab active" onclick="setTab('both',this)">⚡ Çift sinyal</button>
-          <button class="tab" onclick="setTab('wt',this)">WT ≤ -35</button>
-          <button class="tab" onclick="setTab('rsi',this)">RSI ≤ 26</button>
-          <button class="tab" onclick="setTab('any',this)">Tümü</button>
-        </div>
         <div class="tab-group">
           <button class="tab active" onclick="setMkt('all',this)">Tümü</button>
           <button class="tab" onclick="setMkt('bist',this)">BIST</button>
@@ -247,27 +269,24 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
         <div class="stat"><div class="stat-label">Hacim anomalisi</div><div class="stat-val" id="stVol">0</div><div class="stat-sub">Ort. üzeri</div></div>
         <div class="stat"><div class="stat-label">Son tarama</div><div class="stat-val" id="stTime" style="font-size:15px;">—</div><div class="stat-sub" id="stMkt">—</div></div>
       </div>
-      <div class="signal-list" id="sigList"><div class="empty"><div class="empty-icon">📡</div><div class="empty-text">Key'leri gir ve "Tara" butonuna bas</div></div></div>
+      <div id="sigContent"><div class="empty"><div class="empty-icon">📡</div><div class="empty-text">Key'leri gir ve "Tara" butonuna bas</div></div></div>
     </div>
 
     <!-- WATCHLIST -->
     <div class="page" id="page-watchlist">
       <div class="page-hdr"><div><div class="page-title">Watchlist</div><div class="page-sub">Takip ettiğin hisseler</div></div></div>
-      <div class="signal-list" id="wlList"><div class="empty"><div class="empty-icon">★</div><div class="empty-text">Tarama ekranından ★ ile hisse ekle</div></div></div>
+      <div id="wlContent"><div class="empty"><div class="empty-icon">★</div><div class="empty-text">Tarama ekranından ★ ile hisse ekle</div></div></div>
     </div>
 
     <!-- MACRO -->
     <div class="page" id="page-macro">
-      <div class="page-hdr">
-        <div><div class="page-title">Makro Veri</div><div class="page-sub">ABD ekonomik göstergeleri · Finnhub Economic Calendar</div></div>
-        <button class="btn-g" onclick="loadMacro(true)">🔄 Yenile</button>
-      </div>
+      <div class="page-hdr"><div><div class="page-title">Makro Veri</div><div class="page-sub">ABD ekonomik göstergeleri · FRED</div></div><button class="btn-g" onclick="loadMacro(true)">🔄 Yenile</button></div>
       <div id="macroContent"><div class="empty"><div class="empty-icon">📊</div><div class="empty-text">Yükleniyor...</div></div></div>
     </div>
 
     <!-- EARNINGS -->
     <div class="page" id="page-earnings">
-      <div class="page-hdr"><div><div class="page-title">Earnings Takvimi</div><div class="page-sub">ABD'nin en büyük 50 şirketi · Son 2 hafta + Önümüzdeki 45 gün</div></div></div>
+      <div class="page-hdr"><div><div class="page-title">Earnings Takvimi</div><div class="page-sub">ABD'nin en büyük 50 şirketi</div></div></div>
       <div class="earn-filter">
         <div class="tab-group">
           <button class="tab active" onclick="setEarnFilter('all',this)">Tümü</button>
@@ -280,6 +299,12 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
       <div class="earn-grid" id="earnList"><div class="empty"><div class="empty-icon">📅</div><div class="empty-text">Yükleniyor...</div></div></div>
     </div>
 
+    <!-- ASSISTANT -->
+    <div class="page" id="page-assistant">
+      <div class="page-hdr"><div><div class="page-title">Yatırım Asistanı</div><div class="page-sub">Günlük ipuçları · Motivasyon · Başarı hikayeleri</div></div><button class="btn-g" onclick="loadTips(true)">🔄 Yenile</button></div>
+      <div id="assistantFeed"><div class="loading-row"><span class="spinner"></span> Günlük içerik yükleniyor...</div></div>
+    </div>
+
     <!-- SETTINGS -->
     <div class="page" id="page-settings">
       <div class="page-hdr"><div><div class="page-title">Ayarlar</div></div></div>
@@ -288,11 +313,11 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
         <div style="display:flex;flex-direction:column;gap:10px;">
           <input class="ki" id="sFinnhub" type="password" placeholder="Finnhub key..." style="width:100%;"/>
           <input class="ki" id="sAnthropic" type="password" placeholder="Anthropic key..." style="width:100%;"/>
-          <input class="ki" id="sFred" type="password" placeholder="FRED key (opsiyonel)..." style="width:100%;"/>
+          <input class="ki" id="sFred" type="password" placeholder="FRED key..." style="width:100%;"/>
           <button class="btn" onclick="saveKeysSettings()" style="align-self:flex-start;">Güncelle</button>
         </div>
         <div style="margin-top:18px;padding-top:14px;border-top:0.5px solid var(--border);">
-          <div style="font-size:11px;color:var(--text2);margin-bottom:6px;">Backend durumu</div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:6px;">Backend</div>
           <div style="font-size:12px;color:var(--text3);" id="backendStatus">Kontrol ediliyor...</div>
         </div>
       </div>
@@ -301,12 +326,24 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 </div>
 
 <script>
-const API='http://localhost:5000';
-let signalTab='both',mktTab='all';
+const API='https://yatirim-app-production.up.railway.app';
+let mktTab='all';
 let allSignals=[],watchlist=JSON.parse(localStorage.getItem('wl')||'[]');
+let savedSignals=JSON.parse(localStorage.getItem('savedSignals')||'[]'); // kalıcı sinyal hafızası
 let newsCache={},macroCache=null,earnCache=[],earnFilter='all';
+let tipsCache=null;
 
-window.onload=()=>{loadKeys();checkBackend();renderWatchlist();};
+window.onload=()=>{
+  loadKeys();
+  checkBackend();
+  renderWatchlist();
+  // Kaydedilmiş sinyaller varsa göster
+  if(savedSignals.length>0){
+    allSignals=savedSignals;
+    renderSignalsByMarket();
+    updateStats();
+  }
+};
 
 function loadKeys(){
   const fk=localStorage.getItem('fk'),ak=localStorage.getItem('ak'),fred=localStorage.getItem('fred');
@@ -334,8 +371,8 @@ function saveKeysSettings(){
   updateDots(true,true,!!fred);sendKeys(fk,ak,fred);toast('Güncellendi ✓');
 }
 async function checkBackend(){
-  try{const r=await fetch(`${API}/api/health`);const d=await r.json();document.getElementById('backendStatus').innerHTML=`✅ Çalışıyor · Finnhub:${d.finnhub?'✓':'✗'} · Anthropic:${d.anthropic?'✓':'✗'} · FRED:${d.fred?'✓':'✗'}`;}
-  catch(e){document.getElementById('backendStatus').textContent='❌ Backend yok — py app.py çalıştır';}
+  try{const r=await fetch(`${API}/api/health`);const d=await r.json();document.getElementById('backendStatus').innerHTML=`✅ Railway · Finnhub:${d.finnhub?'✓':'✗'} · Anthropic:${d.anthropic?'✓':'✗'} · FRED:${d.fred?'✓':'✗'}`;}
+  catch(e){document.getElementById('backendStatus').textContent='❌ Backend bağlantısı yok';}
 }
 function showPage(name,el){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -346,35 +383,108 @@ function showPage(name,el){
   if(name==='settings')checkBackend();
   if(name==='macro'&&!macroCache)loadMacro();
   if(name==='earnings'&&!earnCache.length)loadEarnings();
+  if(name==='assistant'&&!tipsCache)loadTips();
 }
-function setTab(t,el){signalTab=t;el.closest('.tab-group').querySelectorAll('.tab').forEach(e=>e.classList.remove('active'));el.classList.add('active');}
 function setMkt(m,el){mktTab=m;el.closest('.tab-group').querySelectorAll('.tab').forEach(e=>e.classList.remove('active'));el.classList.add('active');}
 function setEarnFilter(f,el){earnFilter=f;document.querySelectorAll('.earn-filter .tab').forEach(e=>e.classList.remove('active'));el.classList.add('active');renderEarnings();}
 
 async function runScan(){
   const btn=document.getElementById('scanBtn');
   btn.textContent='⏳ Taranıyor...';btn.disabled=true;
-  document.getElementById('sigList').innerHTML='<div class="loading-row"><span class="spinner"></span> Hisseler taranıyor (30-60 sn)...</div>';
+  document.getElementById('sigContent').innerHTML='<div class="loading-row"><span class="spinner"></span> Hisseler taranıyor (30-60 sn)...</div>';
   document.getElementById('statsRow').style.display='none';
   try{
-    const r=await fetch(`${API}/api/scan?market=${mktTab}&type=${signalTab}`);
-    const d=await r.json();allSignals=d.signals||[];
-    document.getElementById('statsRow').style.display='grid';
-    document.getElementById('stTotal').textContent=allSignals.length;
-    document.getElementById('stDouble').textContent=allSignals.filter(s=>s.double).length;
-    document.getElementById('stVol').textContent=allSignals.filter(s=>s.vol_anomaly).length;
-    document.getElementById('stTime').textContent=new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
-    document.getElementById('stScanned').textContent=(d.scanned||0)+' hisse';
-    document.getElementById('stMkt').textContent=mktTab.toUpperCase();
-    renderSignals();
-  }catch(e){document.getElementById('sigList').innerHTML='<div class="empty"><div class="empty-icon">❌</div><div class="empty-text">Backend bağlantısı yok. py app.py çalışıyor mu?</div></div>';}
+    const r=await fetch(`${API}/api/scan?market=${mktTab}`);
+    const d=await r.json();
+    allSignals=d.signals||[];
+    // Kaydedilmiş sinyallerle birleştir — aynı ticker varsa güncelle, yoksa ekle
+    allSignals.forEach(s=>{
+      const idx=savedSignals.findIndex(x=>x.ticker===s.ticker);
+      if(idx>-1){
+        // Eski tespit tarihini koru, fiyatı güncelle
+        s.detected_at=savedSignals[idx].detected_at;
+        s.detected_price=savedSignals[idx].detected_price;
+        savedSignals[idx]=s;
+      } else {
+        savedSignals.push(s);
+      }
+    });
+    // 7 günden eski ve watchlist'te olmayan sinyalleri temizle
+    const weekAgo=new Date(Date.now()-7*24*60*60*1000).toISOString().slice(0,16);
+    savedSignals=savedSignals.filter(s=>{
+      const isWl=watchlist.some(w=>w.ticker===s.ticker);
+      return isWl || !s.detected_at || s.detected_at>=weekAgo;
+    });
+    localStorage.setItem('savedSignals',JSON.stringify(savedSignals));
+    allSignals=savedSignals;
+    updateStats();
+    renderSignalsByMarket();
+  }catch(e){
+    document.getElementById('sigContent').innerHTML='<div class="empty"><div class="empty-icon">❌</div><div class="empty-text">Backend bağlantısı yok.</div></div>';
+  }
   btn.textContent='🔍 Tara';btn.disabled=false;
 }
 
-function renderSignals(){
-  const list=document.getElementById('sigList');
-  if(!allSignals.length){list.innerHTML='<div class="empty"><div class="empty-icon">🔍</div><div class="empty-text">Sinyal bulunamadı</div></div>';return;}
-  list.innerHTML='';allSignals.forEach(s=>list.appendChild(makeRow(s)));
+function updateStats(){
+  const filtered=getFilteredSignals();
+  document.getElementById('statsRow').style.display='grid';
+  document.getElementById('stTotal').textContent=filtered.length;
+  document.getElementById('stDouble').textContent=filtered.filter(s=>s.double).length;
+  document.getElementById('stVol').textContent=filtered.filter(s=>s.vol_anomaly).length;
+  document.getElementById('stTime').textContent=new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('stScanned').textContent='Kaydedilen';
+  document.getElementById('stMkt').textContent=mktTab.toUpperCase();
+}
+
+function getFilteredSignals(){
+  if(mktTab==='all') return allSignals;
+  return allSignals.filter(s=>s.market===mktTab);
+}
+
+function renderSignalsByMarket(){
+  const content=document.getElementById('sigContent');
+  const filtered=getFilteredSignals();
+  if(!filtered.length){
+    content.innerHTML='<div class="empty"><div class="empty-icon">🔍</div><div class="empty-text">Sinyal bulunamadı</div></div>';
+    return;
+  }
+  const bist=filtered.filter(s=>s.market==='bist');
+  const nasdaq=filtered.filter(s=>s.market==='nasdaq');
+  const sp500=filtered.filter(s=>s.market==='sp500');
+  content.innerHTML='';
+  if(bist.length) content.appendChild(makeMarketSection('BIST','mb-bist',bist));
+  if(nasdaq.length) content.appendChild(makeMarketSection('NASDAQ','mb-nasdaq',nasdaq));
+  if(sp500.length) content.appendChild(makeMarketSection('S&P 500','mb-sp500',sp500));
+}
+
+function makeMarketSection(label,badgeClass,signals){
+  const section=document.createElement('div');
+  section.className='market-section';
+  section.innerHTML=`<div class="market-header"><span class="market-badge ${badgeClass}">${label}</span><span class="market-count">${signals.length} sinyal</span></div>`;
+  const list=document.createElement('div');
+  list.className='signal-list';
+  signals.forEach(s=>list.appendChild(makeRow(s)));
+  section.appendChild(list);
+  return section;
+}
+
+function timeSinceDetect(detected_at){
+  if(!detected_at) return null;
+  try{
+    const dt=new Date(detected_at.replace(' ','T'));
+    const diff=Date.now()-dt.getTime();
+    const hours=Math.floor(diff/3600000);
+    const days=Math.floor(diff/86400000);
+    if(days>0) return `${days} gün önce tespit edildi`;
+    if(hours>0) return `${hours} saat önce tespit edildi`;
+    return 'Az önce tespit edildi';
+  }catch{return null;}
+}
+
+function sinceDetectChange(s){
+  if(!s.detected_price||!s.price) return null;
+  const chg=((s.price-s.detected_price)/s.detected_price*100).toFixed(2);
+  return parseFloat(chg);
 }
 
 function makeRow(s){
@@ -385,7 +495,13 @@ function makeRow(s){
   const bPct=tot?Math.round(s.buy/tot*100):0,hPct=tot?Math.round(s.hold/tot*100):0,sPct=100-bPct-hPct;
   const tDiff=s.target_mean?((s.target_mean-s.price)/s.price*100).toFixed(1):null;
   const l52Pct=(s.high_52&&s.low_52&&s.high_52!==s.low_52)?Math.round((s.price-s.low_52)/(s.high_52-s.low_52)*100):null;
-  div.className='sig'+(s.double?' double':'');div.id='row-'+s.ticker;
+  const detectLabel=timeSinceDetect(s.detected_at);
+  const sinceChg=sinceDetectChange(s);
+  const sinceClass=sinceChg===null?'':sinceChg>=0?'sup':'sdn';
+  const sinceText=sinceChg!==null?`Tespitten: ${sinceChg>=0?'+':''}${sinceChg}%`:'' ;
+
+  div.className='sig'+(s.double?' double':'');
+  div.id='row-'+s.ticker;
   div.innerHTML=`
     <div class="sig-top" onclick="toggleRow('${s.ticker}',${s.is_bist})">
       <div class="lw">${s.logo?`<img class="li" src="${s.logo}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><span class="lf" style="display:none">${s.ticker.slice(0,3)}</span>`:`<span class="lf">${s.ticker.slice(0,3)}</span>`}</div>
@@ -400,40 +516,42 @@ function makeRow(s){
       <div class="pcol">
         <div class="price">${s.price.toFixed(2)}</div>
         <div class="chg ${up?'up':'dn'}">${up?'+':''}${(s.change||0).toFixed(2)}%</div>
-        <div class="since">${(s.week_change||0)>=0?'+':''}${(s.week_change||0).toFixed(1)}% (5g)</div>
+        ${sinceText?`<div class="since-detect ${sinceClass}">${sinceText}</div>`:''}
+        ${detectLabel?`<div class="since-detect" style="color:var(--text3)">${detectLabel}</div>`:''}
       </div>
       <button class="star ${isStarred?'on':''}" onclick="event.stopPropagation();toggleStar(${JSON.stringify(JSON.stringify(s))},this)">★</button>
       <span class="chevron">▾</span>
     </div>
     <div class="sig-detail"><div class="detail-inner">
+      ${detectLabel?`<div class="detect-strip">📍 <b>${detectLabel}</b> &nbsp;·&nbsp; Tespit fiyatı: <b>${s.detected_price||s.price}</b> &nbsp;·&nbsp; Şu an: <b>${s.price}</b> &nbsp;·&nbsp; <span style="color:${sinceChg>=0?'var(--green)':'var(--red)'}">${sinceChg!==null?(sinceChg>=0?'+':'')+sinceChg+'%':'—'}</span></div>`:''}
       <div class="detail-grid">
-        <div class="dstat"><div class="dl">Analist tavsiyesi <span class="tip" data-tip="Wall Street analistlerinin ${tot} kişilik konsensüs görüşü. 'Al' tavsiyesi fiyatın yükseleceği, 'Sat' tavsiyesi düşeceği, 'Tut' ise mevcut fiyatın adil olduğu anlamına gelir.">ⓘ</span></div>
-          ${tot>0?`<div class="analyst-bars"><div class="ab ab-b" style="flex:${bPct}"></div><div class="ab ab-h" style="flex:${hPct}"></div><div class="ab ab-s" style="flex:${sPct}"></div></div><div class="analyst-lbl"><span class="al-b">${s.buy} Al</span><span class="al-h">${s.hold} Tut</span><span class="al-s">${s.sell} Sat</span></div>`:'<div class="ds">BIST hisseleri için analist verisi yok</div>'}
+        <div class="dstat"><div class="dl">Analist <span class="tip" data-tip="Wall Street analistlerinin konsensüs görüşü. Al = fiyat yükselecek, Sat = düşecek, Tut = adil fiyatta.">ⓘ</span></div>
+          ${tot>0?`<div class="analyst-bars"><div class="ab ab-b" style="flex:${bPct}"></div><div class="ab ab-h" style="flex:${hPct}"></div><div class="ab ab-s" style="flex:${sPct}"></div></div><div class="analyst-lbl"><span class="al-b">${s.buy} Al</span><span class="al-h">${s.hold} Tut</span><span class="al-s">${s.sell} Sat</span></div>`:'<div class="ds">Veri yok</div>'}
         </div>
-        <div class="dstat"><div class="dl">12 aylık hedef fiyat <span class="tip" data-tip="Analistlerin önümüzdeki 12 ay için belirlediği ortalama fiyat hedefi. Mevcut fiyatla karşılaştırıldığında potansiyel getiriyi gösterir.">ⓘ</span></div>
+        <div class="dstat"><div class="dl">Hedef fiyat <span class="tip" data-tip="Analistlerin 12 aylık ortalama hedef fiyatı.">ⓘ</span></div>
           <div class="dv">${s.target_mean?Number(s.target_mean).toFixed(2):'—'}</div>
-          ${tDiff?`<div class="ds" style="color:${parseFloat(tDiff)>=0?'var(--green)':'var(--red)'}">%${tDiff} potansiyel getiri</div>`:''}
+          ${tDiff?`<div class="ds" style="color:${parseFloat(tDiff)>=0?'var(--green)':'var(--red)'}">%${tDiff} potansiyel</div>`:''}
         </div>
-        <div class="dstat"><div class="dl">52 haftalık konum <span class="tip" data-tip="Hissenin son 52 haftadaki en düşük ve en yüksek fiyat arasındaki konumu. %0 = yıllık dip, %100 = yıllık zirve. Düşük değer, hissenin tarihi dipten alındığını gösterir.">ⓘ</span></div>
+        <div class="dstat"><div class="dl">52h konumu <span class="tip" data-tip="%0 = yıllık dip, %100 = yıllık zirve.">ⓘ</span></div>
           <div class="dv">${l52Pct!==null?'%'+l52Pct:'—'}</div>
-          ${l52Pct!==null?`<div class="ds" style="color:${l52Pct<20?'var(--amber)':'var(--text2)'}">${l52Pct<20?'⚠ Yıllık dibe yakın':'Normal bölge'}</div>`:''}
+          ${l52Pct!==null?`<div class="ds" style="color:${l52Pct<20?'var(--amber)':'var(--text2)'}">${l52Pct<20?'⚠ Dibe yakın':'Normal'}</div>`:''}
         </div>
-        <div class="dstat"><div class="dl">WaveTrend değeri <span class="tip" data-tip="Momentum ve aşırı alım/satım göstergesi (n1=10, n2=21). -35 altı aşırı satım — fiyat aşırı düştü, dönüş gelebilir. -53 altı ekstrem satım bölgesi. TradingView'daki WT_CROSS_LB göstergesiyle aynı ayarlar.">ⓘ</span></div>
+        <div class="dstat"><div class="dl">WaveTrend <span class="tip" data-tip="n1=10, n2=21. -35 altı aşırı satım — dönüş sinyali. -53 altı ekstrem.">ⓘ</span></div>
           <div class="dv" style="color:${s.wt<=-35?'#60a5fa':'var(--text)'}">${s.wt}</div>
-          <div class="ds">${s.wt<=-53?'Ekstrem satım bölgesi':s.wt<=-35?'Aşırı satım — dönüş sinyali':'Normal bölge'}</div>
+          <div class="ds">${s.wt<=-53?'Ekstrem satım':s.wt<=-35?'Aşırı satım':'Normal'}</div>
         </div>
-        <div class="dstat"><div class="dl">RSI (14 periyot) <span class="tip" data-tip="Göreceli Güç Endeksi — fiyat hareketinin hızını ve değişimini ölçer. Kapanış fiyatı, 14 periyot. 30 altı aşırı satım (potansiyel alım fırsatı), 70 üzeri aşırı alım (dikkatli ol). TradingView varsayılan ayarlarıyla hesaplanır.">ⓘ</span></div>
+        <div class="dstat"><div class="dl">RSI (14) <span class="tip" data-tip="Kapanış fiyatı, 14 periyot. 26 altı aşırı satım. 70 üzeri aşırı alım.">ⓘ</span></div>
           <div class="dv" style="color:${s.rsi<=26?'#fbbf24':'var(--text)'}">${s.rsi}</div>
-          <div class="ds">${s.rsi<=20?'Ekstrem satım':s.rsi<=26?'Aşırı satım — alım bölgesi':s.rsi>=70?'Aşırı alım — dikkat':'Normal bölge'}</div>
+          <div class="ds">${s.rsi<=20?'Ekstrem':s.rsi<=26?'Aşırı satım':s.rsi>=70?'Aşırı alım':'Normal'}</div>
         </div>
-        <div class="dstat"><div class="dl">Beta katsayısı <span class="tip" data-tip="Hissenin piyasaya göre volatilitesi. Beta=1 piyasayla aynı hareket eder. Beta>1 piyasadan daha sert hareket eder (agresif). Beta<1 piyasadan daha sakin hareket eder (defansif). Negatif beta ise piyasayla ters hareket eder.">ⓘ</span></div>
+        <div class="dstat"><div class="dl">Beta <span class="tip" data-tip="Piyasaya göre volatilite. >1 agresif, <1 defansif.">ⓘ</span></div>
           <div class="dv">${s.beta?Number(s.beta).toFixed(2):'—'}</div>
-          <div class="ds">${s.beta?(s.beta>1.3?'Agresif — yüksek volatilite':s.beta<0.8?'Defansif — düşük volatilite':'Orta volatilite'):''}</div>
+          <div class="ds">${s.beta?(s.beta>1.3?'Agresif':s.beta<0.8?'Defansif':'Orta'):''}</div>
         </div>
       </div>
-      ${(s.insider_buy>0||s.insider_sell>0)?`<div class="insider-strip">🏢 <span style="color:var(--text2)">Son 30g içeriden işlem:</span>${s.insider_buy>0?`<span class="ins-buy">+${s.insider_buy} yönetici alımı <span class="imp-tag">⚠ Güçlü sinyal</span></span>`:''}${s.insider_sell>0?`<span class="ins-sell">-${s.insider_sell} yönetici satışı</span>`:''}</div>`:''}
+      ${(s.insider_buy>0||s.insider_sell>0)?`<div class="insider-strip">🏢 İçeriden (30g): ${s.insider_buy>0?`<span class="ins-buy">+${s.insider_buy} alım <span class="imp-tag">⚠ Önemli</span></span>`:''} ${s.insider_sell>0?`<span class="ins-sell">-${s.insider_sell} satış</span>`:''}</div>`:''}
       <div class="news-header"><span>Haberler ${s.is_bist?'· KAP + Mynet + Finnhub':'· Finnhub'}</span><span id="spill-${s.ticker}"></span></div>
-      <div id="news-${s.ticker}"><div class="loading-row"><span class="spinner"></span> Haberler yükleniyor...</div></div>
+      <div id="news-${s.ticker}"><div class="loading-row"><span class="spinner"></span> Yükleniyor...</div></div>
     </div></div>`;
   return div;
 }
@@ -442,37 +560,38 @@ async function toggleRow(ticker,isBist){
   const row=document.getElementById('row-'+ticker);
   const wasOpen=row.classList.contains('open');
   document.querySelectorAll('.sig.open').forEach(r=>r.classList.remove('open'));
-  if(!wasOpen){row.classList.add('open');if(!newsCache[ticker]){newsCache[ticker]=true;await loadNews(ticker,isBist);}}
+  if(!wasOpen){
+    row.classList.add('open');
+    if(!newsCache[ticker]){newsCache[ticker]=true;await loadNews(ticker,isBist);}
+  }
 }
 
 async function loadNews(ticker,isBist){
   const area=document.getElementById('news-'+ticker),pill=document.getElementById('spill-'+ticker);
   try{
     const r=await fetch(`${API}/api/news?symbol=${ticker}&is_bist=${isBist}`);
-    const d=await r.json();const articles=d.articles||[];
-    if(!articles.length){area.innerHTML='<div class="ds" style="padding:8px 0;color:var(--text2);">Haber bulunamadı.</div>';return;}
-    area.innerHTML='<div class="loading-row"><span class="spinner"></span> Haberler analiz ediliyor...</div>';
-    const signal=allSignals.find(s=>s.ticker===ticker)||{};
-    const ar=await fetch(`${API}/api/analyze`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ticker,articles,wt:signal.wt||0,rsi:signal.rsi||0,is_bist:isBist})});
+    const d=await r.json();const arts=d.articles||[];
+    if(!arts.length){area.innerHTML='<div style="padding:8px 0;color:var(--text2);font-size:12px;">Haber bulunamadı.</div>';return;}
+    area.innerHTML='<div class="loading-row"><span class="spinner"></span> Analiz ediliyor...</div>';
+    const sig=allSignals.find(s=>s.ticker===ticker)||{};
+    const ar=await fetch(`${API}/api/analyze`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ticker,articles:arts,wt:sig.wt||0,rsi:sig.rsi||0,is_bist:isBist})});
     const ad=await ar.json();const analyzed=ad.analyzed_articles||[];const sentPct=ad.overall_sentiment_pct||50;
     const pc=sentPct>=60?'sp-pos':sentPct>=40?'sp-neu':'sp-neg';
     pill.innerHTML=`<span class="sent-pill ${pc}">%${sentPct} olumlu</span>`;
     let html='';
-    articles.forEach((a,i)=>{
+    arts.forEach((a,i)=>{
       const ai=analyzed.find(x=>x.index===i)||{};
-      const titleTr=ai.turkish_title||a.headline||'';const summary=ai.summary||'';
-      const sent=ai.sentiment||'neutral';const isImp=ai.is_important||false;
-      const sc=sent==='positive'?'ns-pos':sent==='negative'?'ns-neg':'ns-neu';
-      const sl=sent==='positive'?'Olumlu':sent==='negative'?'Olumsuz':'Nötr';
+      const sc=ai.sentiment==='positive'?'ns-pos':ai.sentiment==='negative'?'ns-neg':'ns-neu';
+      const sl=ai.sentiment==='positive'?'Olumlu':ai.sentiment==='negative'?'Olumsuz':'Nötr';
       html+=`<div class="news-item">
-        <div class="news-top"><div class="news-title-tr">${titleTr}</div>${isImp?'<span class="news-imp">⚠ Önemli</span>':''}</div>
-        ${summary?`<div class="news-summary">${summary}</div>`:''}
-        <div class="news-meta"><span>${a.source||''}</span>${a.datetime?`<span>${new Date(a.datetime*1000).toLocaleDateString('tr-TR')}</span>`:a.pub_date?`<span>${a.pub_date}</span>`:''}<span class="news-sent ${sc}">${sl}</span>${a.url&&a.url!=='#'?`<a href="${a.url}" class="news-link" target="_blank">Haberi oku →</a>`:''}</div>
+        <div class="news-top"><div class="news-title-tr">${ai.turkish_title||a.headline||''}</div>${ai.is_important?'<span class="news-imp">⚠ Önemli</span>':''}</div>
+        ${ai.summary?`<div class="news-summary">${ai.summary}</div>`:''}
+        <div class="news-meta"><span>${a.source||''}</span>${a.datetime?`<span>${new Date(a.datetime*1000).toLocaleDateString('tr-TR')}</span>`:a.pub_date?`<span>${a.pub_date}</span>`:''}<span class="news-sent ${sc}">${sl}</span>${a.url&&a.url!=='#'?`<a href="${a.url}" class="news-link" target="_blank">Oku →</a>`:''}</div>
       </div>`;
     });
     if(ad.ai_comment)html+=`<div class="ai-box"><div class="ai-label">✦ AI Yorumu</div><div class="ai-text">${ad.ai_comment}</div></div>`;
     area.innerHTML=html;
-  }catch(e){area.innerHTML='<div class="ds" style="color:var(--red);padding:8px 0;">Haber yüklenemedi.</div>';}
+  }catch(e){area.innerHTML='<div style="color:var(--red);padding:8px 0;font-size:12px;">Haber yüklenemedi.</div>';}
 }
 
 function toggleStar(sJson,btn){
@@ -482,101 +601,81 @@ function toggleStar(sJson,btn){
   localStorage.setItem('wl',JSON.stringify(watchlist));
 }
 function renderWatchlist(){
-  const list=document.getElementById('wlList');
-  if(!watchlist.length){list.innerHTML='<div class="empty"><div class="empty-icon">★</div><div class="empty-text">Tarama ekranından ★ ile hisse ekle</div></div>';return;}
-  list.innerHTML='';watchlist.forEach(s=>list.appendChild(makeRow(s)));
+  const c=document.getElementById('wlContent');
+  if(!watchlist.length){c.innerHTML='<div class="empty"><div class="empty-icon">★</div><div class="empty-text">Tarama ekranından ★ ile hisse ekle</div></div>';return;}
+  const bist=watchlist.filter(s=>s.market==='bist'),nasdaq=watchlist.filter(s=>s.market==='nasdaq'),sp500=watchlist.filter(s=>s.market==='sp500');
+  c.innerHTML='';
+  if(bist.length) c.appendChild(makeMarketSection('BIST','mb-bist',bist));
+  if(nasdaq.length) c.appendChild(makeMarketSection('NASDAQ','mb-nasdaq',nasdaq));
+  if(sp500.length) c.appendChild(makeMarketSection('S&P 500','mb-sp500',sp500));
 }
 
 // MACRO
 async function loadMacro(force=false){
   if(!force&&macroCache)return;
-  document.getElementById('macroContent').innerHTML='<div class="loading-row"><span class="spinner"></span> Ekonomik takvim yükleniyor...</div>';
+  document.getElementById('macroContent').innerHTML='<div class="loading-row"><span class="spinner"></span> FRED yükleniyor...</div>';
   try{
     const r=await fetch(`${API}/api/macro`);const d=await r.json();
     if(d.error){document.getElementById('macroContent').innerHTML=`<div class="empty"><div class="empty-icon">🔑</div><div class="empty-text">${d.error}</div></div>`;return;}
     macroCache=d.data||[];renderMacro();
-  }catch(e){document.getElementById('macroContent').innerHTML='<div class="empty"><div class="empty-icon">❌</div><div class="empty-text">Backend bağlantısı yok</div></div>';}
+  }catch(e){document.getElementById('macroContent').innerHTML='<div class="empty"><div class="empty-icon">❌</div><div class="empty-text">Bağlantı yok</div></div>';}
 }
-
 function macroIsGood(item){
-  if(!item.actual||!item.previous)return'neutral';
+  if(item.actual===null||item.previous===null)return'neutral';
   const up=item.actual>item.previous;
-  const good_if=item.good_if;
-  if(good_if==='high')return up?'good':'bad';
-  if(good_if==='low')return up?'bad':'good';
-  return'neutral';
+  return item.good_if==='high'?(up?'good':'bad'):item.good_if==='low'?(up?'bad':'good'):'neutral';
 }
-
 function renderMacro(){
-  if(!macroCache||!macroCache.length){document.getElementById('macroContent').innerHTML='<div class="empty"><div class="empty-icon">📊</div><div class="empty-text">Veri yüklenemedi. Finnhub key kontrol et.</div></div>';return;}
+  if(!macroCache||!macroCache.length){document.getElementById('macroContent').innerHTML='<div class="empty"><div class="empty-icon">📊</div><div class="empty-text">Veri yüklenemedi</div></div>';return;}
   const grid=document.createElement('div');grid.className='macro-grid';
   macroCache.forEach(item=>grid.appendChild(makeMacroCard(item)));
   document.getElementById('macroContent').innerHTML='';
   document.getElementById('macroContent').appendChild(grid);
 }
-
 function makeMacroCard(item){
   const div=document.createElement('div');div.className='mc';div.id='mc-'+item.key;
   const isGood=macroIsGood(item);
-  const goodLabel=isGood==='good'?'✅ Olumlu':isGood==='bad'?'⚠️ Olumsuz':'— Veri bekleniyor';
+  const goodLabel=isGood==='good'?'✅ Olumlu':isGood==='bad'?'⚠️ Olumsuz':'— Bekleniyor';
   const hasActual=item.actual!==null;
   const chg=hasActual&&item.previous!==null?item.actual-item.previous:null;
-  const chgSign=chg>=0?'+':'';
   const impClass=item.impact==='high'?'high':'medium';
-  const impLabel=item.impact==='high'?'🔴 Yüksek etki':'🟡 Orta etki';
-
-  // Geçmiş grafik
+  const impLabel=item.impact==='high'?'🔴 Yüksek':'🟡 Orta';
   let histHtml='';
   if(item.history&&item.history.length>1){
-    const vals=item.history.map(h=>h.value);
-    const mx=Math.max(...vals),mn=Math.min(...vals),rng=mx-mn||1;
+    const vals=item.history.map(h=>h.value),mx=Math.max(...vals),mn=Math.min(...vals),rng=mx-mn||1;
     histHtml=item.history.map(h=>{
       const pct=Math.round(((h.value-mn)/rng)*100);
-      const lbl=h.date.slice(2,7).replace('-','/');
+      const dt=h.date; // YYYY-MM-DD
+      const lbl=dt.slice(2,4)+'/'+dt.slice(5,7); // YY/MM formatı
       return `<div class="mc-bar-w"><div class="mc-bar" style="height:${Math.max(pct,5)}%"></div><div class="mc-bar-lbl">${lbl}</div></div>`;
     }).join('');
   }
-
-  // Yaklaşan veri
   let upcomingHtml='';
   if(item.next_date){
     const d=item.days_until;
     const dLabel=d===0?'Bugün':d===1?'Yarın':`${d} gün sonra`;
-    const est=item.next_estimate!==null?`Beklenti: ${item.next_estimate} ${item.unit||''}`:'Beklenti açıklanmadı';
-    upcomingHtml=`<div class="mc-upcoming">
-      <span class="mc-upcoming-badge">📅 Yaklaşan</span>
-      <span><b class="mc-days">${dLabel}</b> · ${item.next_time_tr||item.next_date}</span>
-      <span style="color:var(--text2);font-size:10px;">${est}</span>
-    </div>`;
+    upcomingHtml=`<div class="mc-upcoming"><span class="mc-upcoming-badge">📅 Yaklaşan açıklama</span><span><b class="mc-days">${dLabel}</b> · ${item.next_date_tr||item.next_date}</span></div>`;
   }
-
   div.innerHTML=`
     <div class="mc-head" onclick="toggleMacro('${item.key}')">
       <div class="mc-top">
-        <div class="mc-name">${item.name}
-          <button class="mc-tip-btn" data-tip="${item.desc}" onclick="event.stopPropagation()">ⓘ</button>
-        </div>
-        <div class="mc-badges">
-          <span class="mc-impact ${impClass}">${impLabel}</span>
-          <span class="mc-freq">${item.freq}</span>
-        </div>
+        <div class="mc-name">${item.name}<button class="mc-tip-btn" data-tip="${item.desc}" onclick="event.stopPropagation()">ⓘ</button></div>
+        <div class="mc-badges"><span class="mc-impact ${impClass}">${impLabel}</span><span class="mc-freq">${item.freq}</span></div>
       </div>
       <div class="mc-vals">
         <div class="mc-val-blk">
           <div class="mc-val-label">Son açıklanan</div>
           <div class="mc-val">${hasActual?item.actual:'—'}<span class="mc-val-unit"> ${item.unit||''}</span></div>
-          ${chg!==null?`<div class="mc-change ${chg>=0?'pos':'neg'}">${chgSign}${chg.toFixed(3)} öncekine göre</div>`:''}
-          ${item.released_time_tr?`<div class="mc-val-date">📅 ${item.released_time_tr}</div>`:''}
-        </div>
-        <div class="mc-val-blk">
-          <div class="mc-val-label">Beklenti</div>
-          <div class="mc-val" style="color:var(--text2)">${item.estimate!==null?item.estimate:'—'}<span class="mc-val-unit"> ${item.unit||''}</span></div>
-          <div class="mc-val-date" style="color:var(--text3)">Açıklanma öncesi tahmin</div>
+          ${chg!==null?`<div class="mc-change ${chg>=0?'pos':'neg'}">${chg>=0?'+':''}${chg.toFixed(3)} öncekine göre</div>`:''}
+          ${item.actual_date_tr?`<div class="mc-val-date">📅 ${item.actual_date_tr}</div>`:''}
         </div>
         <div class="mc-val-blk">
           <div class="mc-val-label">Önceki</div>
           <div class="mc-val" style="color:var(--text2)">${item.previous!==null?item.previous:'—'}<span class="mc-val-unit"> ${item.unit||''}</span></div>
-          <div><span class="mc-good ${isGood}">${goodLabel}</span></div>
+        </div>
+        <div class="mc-val-blk">
+          <div class="mc-val-label">Değerlendirme</div>
+          <span class="mc-good ${isGood}">${goodLabel}</span>
         </div>
       </div>
       ${histHtml?`<div class="mc-hist">${histHtml}</div>`:''}
@@ -587,7 +686,6 @@ function makeMacroCard(item){
     </div>`;
   return div;
 }
-
 async function toggleMacro(key){
   const card=document.getElementById('mc-'+key);
   const wasOpen=card.classList.contains('open');
@@ -601,22 +699,21 @@ async function toggleMacro(key){
       try{
         const r=await fetch(`${API}/api/macro/analyze`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({item})});
         const d=await r.json();
-        aiEl.innerHTML=`<div class="ai-label" style="color:var(--accent);font-size:10px;margin-bottom:8px;">✦ AI Yorumu</div><div class="ai-text" style="font-size:12px;line-height:1.7;color:var(--text2);">${d.text||'Yorum alınamadı.'}</div>`;
-      }catch(e){aiEl.textContent='Yorum alınamadı.';}
+        aiEl.innerHTML=`<div class="ai-label" style="color:var(--accent);font-size:10px;margin-bottom:8px;">✦ AI Yorumu</div><div style="font-size:12px;line-height:1.7;color:var(--text2);">${d.text||'Yorum alınamadı.'}</div>`;
+      }catch{aiEl.textContent='Yorum alınamadı.';}
     }
   }
 }
 
 // EARNINGS
 async function loadEarnings(){
-  document.getElementById('earnList').innerHTML='<div class="loading-row"><span class="spinner"></span> Earnings yükleniyor...</div>';
+  document.getElementById('earnList').innerHTML='<div class="loading-row"><span class="spinner"></span> Yükleniyor...</div>';
   try{
     const r=await fetch(`${API}/api/earnings`);const d=await r.json();
     if(d.error){document.getElementById('earnList').innerHTML=`<div class="empty"><div class="empty-icon">🔑</div><div class="empty-text">${d.error}</div></div>`;return;}
     earnCache=d.earnings||[];renderEarnings();
-  }catch(e){document.getElementById('earnList').innerHTML='<div class="empty"><div class="empty-icon">❌</div><div class="empty-text">Backend bağlantısı yok</div></div>';}
+  }catch{document.getElementById('earnList').innerHTML='<div class="empty"><div class="empty-icon">❌</div><div class="empty-text">Bağlantı yok</div></div>';}
 }
-
 function renderEarnings(){
   const today=new Date().toISOString().split('T')[0];
   let data=earnCache;
@@ -627,31 +724,57 @@ function renderEarnings(){
   if(!data.length){list.innerHTML='<div class="empty"><div class="empty-icon">📅</div><div class="empty-text">Bu filtrede veri yok</div></div>';return;}
   list.innerHTML='';
   data.forEach(e=>{
-    const isUpcoming=e.eps_actual===null;
-    const cls=isUpcoming?'upcoming':e.beat?'beat':'miss';
-    const badge=isUpcoming?'<span class="earn-badge eb-upcoming">📅 Yaklaşan</span>':e.beat?'<span class="earn-badge eb-beat">✅ Beat</span>':'<span class="earn-badge eb-miss">❌ Miss</span>';
+    const isUp=e.eps_actual===null;
+    const cls=isUp?'upcoming':e.beat?'beat':'miss';
+    const badge=isUp?'<span class="earn-badge eb-upcoming">📅 Yaklaşan</span>':e.beat?'<span class="earn-badge eb-beat">✅ Beat</span>':'<span class="earn-badge eb-miss">❌ Miss</span>';
     const epsA=e.eps_actual!==null?e.eps_actual.toFixed(2):'—';
     const epsE=e.eps_estimate!==null?e.eps_estimate.toFixed(2):'—';
     const revA=e.rev_actual?`$${(e.rev_actual/1e9).toFixed(2)}B`:'—';
     const revE=e.rev_estimate?`$${(e.rev_estimate/1e9).toFixed(2)}B`:'—';
-    const hourLabel=e.hour==='bmo'?'🌅 Açılış öncesi':e.hour==='amc'?'🌙 Kapanış sonrası':'';
-    const epsColor=!isUpcoming?(e.beat?'var(--green)':'var(--red)'):'var(--text)';
+    const hl=e.hour==='bmo'?'🌅 Açılış öncesi':e.hour==='amc'?'🌙 Kapanış sonrası':'';
+    const ec=!isUp?(e.beat?'var(--green)':'var(--red)'):'var(--text)';
     const div=document.createElement('div');div.className=`earn-card ${cls}`;
     div.innerHTML=`
       <div class="earn-logo">${e.logo?`<img src="${e.logo}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" style="width:26px;height:26px;object-fit:contain;border-radius:4px;"/><span style="display:none;font-size:10px;font-weight:700;color:var(--text2)">${e.symbol.slice(0,3)}</span>`:`<span style="font-size:10px;font-weight:700;color:var(--text2)">${e.symbol.slice(0,3)}</span>`}</div>
-      <div class="earn-sym">
-        <div class="earn-tk">${e.symbol}</div>
-        <div class="earn-date">${e.date_tr||e.date}</div>
-        ${e.quarter?`<div class="earn-hour">Q${e.quarter} ${e.year||''}</div>`:''}
-        ${hourLabel?`<div class="earn-hour">${hourLabel}</div>`:''}
-      </div>
+      <div class="earn-sym"><div class="earn-tk">${e.symbol}</div><div class="earn-date">${e.date_tr||e.date}</div>${e.quarter?`<div class="earn-hour">Q${e.quarter} ${e.year||''}</div>`:''} ${hl?`<div class="earn-hour">${hl}</div>`:''}</div>
       <div class="earn-stats">
-        <div class="earn-stat"><div class="earn-stat-label">EPS (Hisse başı kâr)</div><div class="earn-stat-val" style="color:${epsColor}">${epsA}</div><div class="earn-stat-est">Tahmin: ${epsE}</div></div>
+        <div class="earn-stat"><div class="earn-stat-label">EPS (Hisse başı kâr)</div><div class="earn-stat-val" style="color:${ec}">${epsA}</div><div class="earn-stat-est">Tahmin: ${epsE}</div></div>
         <div class="earn-stat"><div class="earn-stat-label">Gelir</div><div class="earn-stat-val">${revA}</div><div class="earn-stat-est">Tahmin: ${revE}</div></div>
-      </div>
-      ${badge}`;
+      </div>${badge}`;
     list.appendChild(div);
   });
+}
+
+// ASSISTANT
+async function loadTips(force=false){
+  if(!force&&tipsCache)return;
+  const feed=document.getElementById('assistantFeed');
+  feed.innerHTML='<div class="loading-row"><span class="spinner"></span> Günlük içerik hazırlanıyor...</div>';
+  if(!localStorage.getItem('ak')){feed.innerHTML='<div class="empty"><div class="empty-icon">🔑</div><div class="empty-text">Anthropic key gerekli</div></div>';return;}
+  try{
+    const today=new Date().toLocaleDateString('tr-TR');
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':localStorage.getItem('ak'),'anthropic-version':'2023-06-01'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',max_tokens:1000,
+        messages:[{role:'user',content:`Tarih: ${today}. Bir yatırım asistanısın. Bana bugün için 2 ayrı kart içeriği üret. Bunlar sırayla şunlar olmalı: 1) Yatırım veya para biriktirme ile ilgili pratik bir ipucu, 2) Gerçek bir başarı hikayesi (Warren Buffett, Peter Lynch vb. yatırımcılardan). Her ikisi de ilham verici ve bilgilendirici olsun. JSON formatında döndür (başka hiçbir şey yazma): {"tips": [{"type": "ipucu", "emoji": "💡", "title": "başlık", "content": "içerik (2-3 cümle)"}, {"type": "hikaye", "emoji": "🏆", "title": "başlık", "content": "içerik (3-4 cümle)"}]}`}]
+      })
+    });
+    const d=await r.json();
+    let raw=d.content?.[0]?.text||'{}';
+    if(raw.includes('```'))raw=raw.split('```')[1];if(raw.startsWith('json'))raw=raw.slice(4);
+    const parsed=JSON.parse(raw.trim());
+    tipsCache=parsed.tips||[];
+    feed.innerHTML='';
+    feed.innerHTML='<div class="assistant-feed" id="tipCards"></div>';
+    const tc=document.getElementById('tipCards');
+    tipsCache.forEach(tip=>{
+      const card=document.createElement('div');card.className='tip-card';
+      card.innerHTML=`<div class="tip-card-label">${tip.emoji} ${tip.type.toUpperCase()}</div><div class="tip-card-text"><b>${tip.title}</b><br><br>${tip.content}</div><div class="tip-card-time">${today}</div>`;
+      tc.appendChild(card);
+    });
+  }catch(e){feed.innerHTML='<div class="empty"><div class="empty-icon">🤖</div><div class="empty-text">İçerik yüklenemedi</div></div>';}
 }
 
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
