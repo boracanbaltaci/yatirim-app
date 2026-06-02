@@ -351,3 +351,59 @@ def health():
 if __name__=="__main__":
     print(f"Backend başlatılıyor... port:{PORT}")
     app.run(host="0.0.0.0",port=PORT,debug=False)
+
+
+@app.route("/api/commodity", methods=["GET"])
+def commodity():
+    symbol = request.args.get("symbol", "GC=F")
+    names = {"GC=F": "Altın", "SI=F": "Gümüş", "CL=F": "Petrol"}
+    try:
+        ticker = yf.Ticker(symbol)
+        hist = ticker.history(period="6mo", interval="1d")
+        if hist.empty or len(hist) < 2:
+            return jsonify({"error": "veri yok"})
+        closes = hist["Close"]
+        price = round(float(closes.iloc[-1]), 2)
+        def pct(days):
+            if len(closes) > days:
+                old = float(closes.iloc[-(days+1)])
+                return round((price - old) / old * 100, 2) if old else None
+            return None
+        return jsonify({
+            "symbol": symbol,
+            "name": names.get(symbol, symbol),
+            "price": price,
+            "d1": pct(1),
+            "d7": pct(7),
+            "d30": pct(30),
+            "d180": pct(180),
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)})
+
+
+@app.route("/api/assistant", methods=["POST"])
+def assistant():
+    if not ANTHROPIC_KEY:
+        return jsonify({"error": "Anthropic key gerekli", "tips": []})
+    data = request.json or {}
+    date = data.get("date", datetime.now().strftime("%d.%m.%Y"))
+    prompt = f"""Tarih: {date}. Bir yatırım asistanısın. Bana bugün için 2 ayrı kart içeriği üret:
+1) Yatırım veya para biriktirme ile ilgili pratik bir ipucu
+2) Gerçek bir başarı hikayesi (Warren Buffett, Peter Lynch, Ray Dalio gibi yatırımcılardan)
+
+JSON formatında döndür (başka hiçbir şey yazma):
+{{"tips": [{{"type": "Günlük İpucu", "emoji": "💡", "title": "başlık", "content": "2-3 cümle içerik"}}, {{"type": "Başarı Hikayesi", "emoji": "🏆", "title": "başlık", "content": "3-4 cümle içerik"}}]}}"""
+    try:
+        r = requests.post("https://api.anthropic.com/v1/messages",
+            headers={"x-api-key": ANTHROPIC_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json"},
+            json={"model": "claude-sonnet-4-20250514", "max_tokens": 1000, "messages": [{"role": "user", "content": prompt}]},
+            timeout=20)
+        raw = r.json().get("content", [{}])[0].get("text", "{}").strip()
+        if "```" in raw:
+            raw = raw.split("```")[1]
+            if raw.startswith("json"): raw = raw[4:]
+        return jsonify(json.loads(raw.strip()))
+    except Exception as e:
+        print(f"Assistant hatası: {e}")
+        return jsonify({"tips": []})
