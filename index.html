@@ -654,12 +654,20 @@ async function loadNews(ticker,isBist){
     const arts=d.articles||[];
     if(!arts.length){area.innerHTML='<div style="padding:8px 0;color:var(--text2);font-size:12px;">Haber bulunamadı.</div>';return;}
     area.innerHTML='<div class="loading-row"><span class="spinner"></span> Analiz ediliyor...</div>';
-    const sig=allSignals.find(s=>s.ticker===ticker)||{};
-    // Backend üzerinden analiz — CORS sorunu yok
+    const sig=allSignals.find(s=>s.ticker===ticker)||watchlist.find(s=>s.ticker===ticker)||{};
+    const tot=(sig.buy||0)+(sig.hold||0)+(sig.sell||0);
+    const l52Pct=(sig.high_52&&sig.low_52&&sig.high_52!==sig.low_52)?Math.round((sig.price-sig.low_52)/(sig.high_52-sig.low_52)*100):null;
+    const signal_data={
+      price: sig.price, change: sig.change,
+      buy: sig.buy||0, hold: sig.hold||0, sell: sig.sell||0,
+      target: sig.target_mean, l52pct: l52Pct,
+      beta: sig.beta, vol_anomaly: sig.vol_anomaly,
+      insider_buy: sig.insider_buy, insider_sell: sig.insider_sell,
+    };
     const ar=await fetch(`${API}/api/analyze`,{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({ticker,articles:arts,wt:sig.wt||0,rsi:sig.rsi||0,is_bist:isBist})
+      body:JSON.stringify({ticker,articles:arts,wt:sig.wt||0,rsi:sig.rsi||0,is_bist:isBist,signal_data})
     });
     const ad=await ar.json();
     const analyzed=ad.analyzed_articles||[];

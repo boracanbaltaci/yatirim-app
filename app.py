@@ -213,19 +213,108 @@ def news():
 
 @app.route("/api/analyze", methods=["POST"])
 def analyze():
-    data=request.json; ticker=data.get("ticker",""); articles=data.get("articles",[]); wt=data.get("wt",0); rsi=data.get("rsi",0)
-    if not ANTHROPIC_KEY or not articles: return jsonify({"analyzed_articles":[],"overall_sentiment_pct":50,"ai_comment":"Analiz için Anthropic key gerekli."})
-    at="".join(f"{i}. {a.get('headline','')}\n{a.get('summary','')[:200]}\n\n" for i,a in enumerate(articles[:8]))
-    prompt=f"""{ticker} hisse haberleri. WT={wt}, RSI={rsi}\n{at}\nJSON:\n{{"analyzed_articles":[{{"index":0,"turkish_title":"TR başlık","summary":"7-8 cümle TR özet","sentiment":"positive/negative/neutral","is_important":true/false}}],"overall_sentiment_pct":65,"ai_comment":"3-4 cümle TR yorum"}}"""
+    data = request.json or {}
+    ticker = data.get("ticker", "")
+    articles = data.get("articles", [])
+    wt = data.get("wt", 0)
+    rsi = data.get("rsi", 0)
+    signal_data = data.get("signal_data", {})
+
+    if not ANTHROPIC_KEY:
+        return jsonify({"analyzed_articles": [], "overall_sentiment_pct": 50, "ai_comment": "Anthropic key eksik."})
+    if not articles:
+        return jsonify({"analyzed_articles": [], "overall_sentiment_pct": 50, "ai_comment": "Haber bulunamadı."})
+
+    # Her haberi ayrı satırda listele
+    articles_text = ""
+    for i, a in enumerate(articles[:8]):
+        headline = a.get("headline", "") or a.get("title", "")
+        summary = a.get("summary", "")[:300]
+        articles_text += f"HABER {i}:\nBaşlık: {headline}\nİçerik: {summary}\n\n"
+
+    # Sinyal verileri
+    signal_info = f"""
+Hisse: {ticker}
+WaveTrend: {wt} ({'Aşırı satım bölgesi' if float(wt or 0) <= -35 else 'Normal'})
+RSI: {rsi} ({'Aşırı satım' if float(rsi or 0) <= 26 else 'Normal'})
+Fiyat: {signal_data.get('price', '—')}
+Günlük değişim: {signal_data.get('change', '—')}%
+52h konumu: {signal_data.get('l52pct', '—')}%
+Analist görüşü: {signal_data.get('buy', 0)} Al / {signal_data.get('hold', 0)} Tut / {signal_data.get('sell', 0)} Sat
+Hedef fiyat: {signal_data.get('target', '—')}
+"""
+
+    prompt = f"""Sen bir profesyonel hisse analisti asistanısın. Aşağıdaki {ticker} hissesine ait haberleri ve teknik verileri analiz et.
+
+TEKNİK VERİLER:
+{signal_info}
+
+HABERLER:
+{articles_text}
+
+Şimdi iki şey yap:
+
+1. Her haberi Türkçeye çevir ve 7-8 cümleyle özetle. Haberin şirkete etkisini, önemini ve yatırımcı açısından ne anlama geldiğini belirt.
+
+2. Tüm verileri (teknik göstergeler + haberler) birlikte değerlendirerek kapsamlı bir yatırımcı yorumu yaz. WaveTrend ve RSI aşırı satım bölgesinde mi, haberler olumlu mu olumsuz mu, alım fırsatı mı yoksa dikkatli mi olunmalı?
+
+SADECE şu JSON formatında yanıt ver, başka hiçbir şey yazma:
+
+{{
+  "analyzed_articles": [
+    {{
+      "index": 0,
+      "turkish_title": "Türkçe başlık",
+      "summary": "7-8 cümlelik Türkçe özet. Haberin içeriği, şirkete etkisi ve yatırımcı açısından önemi.",
+      "sentiment": "positive",
+      "is_important": false
+    }}
+  ],
+  "overall_sentiment_pct": 65,
+  "ai_comment": "Teknik göstergeler ve haberleri birlikte değerlendiren kapsamlı 4-5 cümlelik Türkçe yatırımcı yorumu."
+}}
+
+Not: sentiment değeri sadece positive, negative veya neutral olabilir. overall_sentiment_pct 0-100 arası sayı."""
+
     try:
-        r=requests.post("https://api.anthropic.com/v1/messages",
-            headers={"x-api-key":ANTHROPIC_KEY,"anthropic-version":"2023-06-01","content-type":"application/json"},
-            json={"model":"claude-sonnet-4-20250514","max_tokens":1000,"messages":[{"role":"user","content":prompt}]},timeout=30)
-        raw=r.json().get("content",[{}])[0].get("text","{}").strip()
-        if "```" in raw: raw=raw.split("```")[1]; raw=raw[4:] if raw.startswith("json") else raw
-        return jsonify(json.loads(raw.strip()))
+        r = requests.post(
+            "https://api.anthropic.com/v1/messages",
+            headers={
+                "x-api-key": ANTHROPIC_KEY,
+                "anthropic-version": "2023-06-01",
+                "content-type": "application/json"
+            },
+            json={
+                "model": "claude-sonnet-4-20250514",
+                "max_tokens": 2000,
+                "messages": [{"role": "user", "content": prompt}]
+            },
+            timeout=60
+        )
+        response_data = r.json()
+        raw = response_data.get("content", [{}])[0].get("text", "").strip()
+
+        # JSON temizle
+        if "```json" in raw:
+            raw = raw.split("```json")[1].split("```")[0].strip()
+        elif "```" in raw:
+            raw = raw.split("```")[1].split("```")[0].strip()
+
+        # JSON parse
+        parsed = json.loads(raw)
+        return jsonify(parsed)
+
+    except json.JSONDecodeError as e:
+        print(f"JSON parse hatası: {e}\nRaw: {raw[:200] if 'raw' in dir() else 'yok'}")
+        # Fallback — JSON parse edilemezse raw metni ai_comment olarak döndür
+        return jsonify({
+            "analyzed_articles": [],
+            "overall_sentiment_pct": 50,
+            "ai_comment": raw[:500] if 'raw' in dir() and raw else "Analiz formatı hatalı."
+        })
     except Exception as e:
-        print(f"Analiz hatası: {e}"); return jsonify({"analyzed_articles":[],"overall_sentiment_pct":50,"ai_comment":"Analiz alınamadı."})
+        print(f"Analiz hatası: {e}")
+        return jsonify({"analyzed_articles": [], "overall_sentiment_pct": 50, "ai_comment": f"Hata: {str(e)}"})
 
 
 def fred_obs(series_id,limit=14):
